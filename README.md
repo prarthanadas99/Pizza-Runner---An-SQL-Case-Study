@@ -104,7 +104,7 @@ select runner_id, COUNT(pickup_time) AS delivered_orders, count(order_id) as ord
 ROUND(100 * COUNT(pickup_time) / COUNT(*)) AS delivery_success_percentage from runner_orders ro
 group by 1;
 ```
-
+```sql
 CREATE
 TEMPORARY TABLE row_split_customer_orders_temp AS
 SELECT t.row_num, t.order_id, t.customer_id, t.pizza_id, trim(j1.exclusions) AS exclusions, trim(j2.extras) AS extras, t.order_time
@@ -134,7 +134,7 @@ INNER JOIN pizza_names USING (pizza_id)
 INNER JOIN pizza_toppings USING (topping_id)
 GROUP BY 1,pizza_name
 ORDER BY pizza_id;
-
+```
 SELECT * FROM standard_ingredients;
 SELECT * FROM row_split_pizza_recipes_temp;
 SELECT * FROM row_split_customer_orders_temp;
