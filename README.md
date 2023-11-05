@@ -1,5 +1,18 @@
 # Pizza-Runner---An-SQL-Case-Study
 
+![Alt text](https://8weeksqlchallenge.com/images/case-study-designs/2.png)
+
+### Introduction
+Did you know that over 115 million kilograms of pizza is consumed daily worldwide??? (Well according to Wikipedia anyway…)
+Danny was scrolling through his Instagram feed when something really caught his eye - “80s Retro Styling and Pizza Is The Future!”
+Danny was sold on the idea, but he knew that pizza alone was not going to help him get seed funding to expand his new Pizza Empire - so he had one more genius idea to combine with it - he was going to Uberize it - and so Pizza Runner was launched!
+Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runner Headquarters (otherwise known as Danny’s house) and also maxed out his credit card to pay freelance developers to build a mobile app to accept orders from customers.
+
+### Entity Relationship Diagram
+![image](https://github.com/prarthanadas99/Pizza-Runner---An-SQL-Case-Study/assets/127038385/4deb3bd5-6a69-4be4-9c8c-e2bbc2fb4da7)
+
+
+**A. Pizza Metrics**
 **1. How many pizzas were ordered?**
 ```sql
 select count(order_id) as Total_Pizza_Orders from customer_orders;
@@ -65,7 +78,7 @@ select customer_id, dayofweek(order_time) as order_day, count(order_id) as order
 from customer_orders
 group by 1, 2;
 ```
-
+**B. Runner and Customer Experience**
 **1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)**
 ```sql
 select  extract(week from registration_date) as registration_week, count(runner_id) as total_number_of_runs
@@ -135,10 +148,7 @@ INNER JOIN pizza_toppings USING (topping_id)
 GROUP BY 1,pizza_name
 ORDER BY pizza_id;
 ```
-SELECT * FROM standard_ingredients;
-SELECT * FROM row_split_pizza_recipes_temp;
-SELECT * FROM row_split_customer_orders_temp;
-
+**C. Ingredient Optimisation**
 **1. What are the standard ingredients for each pizza?**
 ```sql
 SELECT * FROM standard_ingredients;
@@ -168,6 +178,7 @@ FROM extra_count_cte
 INNER JOIN pizza_toppings ON extra_count_cte.extra_topping = pizza_toppings.topping_id
 LIMIT 1;
 ```
+**D. Pricing and Ratings**
 **1. If a Meat Lovers pizza costs $12 and Vegetarian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?**
 ```sql
 select sum(case when co.pizza_id = 1 then 12 else 10 end) as revenue from customer_orders co
