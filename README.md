@@ -13,6 +13,7 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 
 
 **A. Pizza Metrics**
+
 **1. How many pizzas were ordered?**
 ```sql
 select count(order_id) as Total_Pizza_Orders from customer_orders;
@@ -79,6 +80,7 @@ from customer_orders
 group by 1, 2;
 ```
 **B. Runner and Customer Experience**
+
 **1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)**
 ```sql
 select  extract(week from registration_date) as registration_week, count(runner_id) as total_number_of_runs
@@ -149,6 +151,7 @@ GROUP BY 1,pizza_name
 ORDER BY pizza_id;
 ```
 **C. Ingredient Optimisation**
+
 **1. What are the standard ingredients for each pizza?**
 ```sql
 SELECT * FROM standard_ingredients;
@@ -179,6 +182,7 @@ INNER JOIN pizza_toppings ON extra_count_cte.extra_topping = pizza_toppings.topp
 LIMIT 1;
 ```
 **D. Pricing and Ratings**
+
 **1. If a Meat Lovers pizza costs $12 and Vegetarian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?**
 ```sql
 select sum(case when co.pizza_id = 1 then 12 else 10 end) as revenue from customer_orders co
