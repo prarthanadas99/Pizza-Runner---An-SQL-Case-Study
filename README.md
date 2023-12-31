@@ -1,3 +1,6 @@
+# Link to Data Bank SQL Case Study
+https://github.com/prarthanadas99/Pizza-Runner---An-SQL-Case-Study.git
+
 # Pizza-Runner---An-SQL-Case-Study
 
 ![Alt text](https://8weeksqlchallenge.com/images/case-study-designs/2.png)
